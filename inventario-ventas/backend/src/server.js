@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors'); // 1. Importas la librería
+const routes = require('./routes');
 const app = express();
 
 // 2. CONFIGURACIÓN DE CORS (Aquí va el paso 3)
