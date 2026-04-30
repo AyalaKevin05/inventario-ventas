@@ -1,6 +1,6 @@
 const express = require('express');
-const cors = require('cors'); // 1. Importas la librería
-const routes = require('./routes');
+const cors = require('cors'); 
+const routes = require('./routes/index');
 const app = express();
 
 // 2. CONFIGURACIÓN DE CORS (Aquí va el paso 3)
@@ -27,7 +27,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', (_, res) => res.json({ mensaje: 'API - Sistema de Inventario y Ventas', version: '2.0.0' }));
-app.use('/api', routes);
+app.use('/', routes);
 
 app.use((_, res) => res.status(404).json({ error: 'Ruta no encontrada.' }));
 app.use((err, _, res, __) => { console.error(err.stack); res.status(500).json({ error: 'Error interno del servidor.' }); });
