@@ -1,11 +1,12 @@
+require('dotenv').config();
 const express = require('express');
-const cors = require('cors'); 
-const routes = require('./routes/index'); // Asumiendo que este archivo ya gestiona todo
+const cors = require('cors');
+const routes = require('./routes/index');
 const app = express();
 
-// 1. CONFIGURACIÓN DE CORS
 const allowedOrigins = [
-  'https://inventario-ventas.vercel.app', // SIN barra al final
+  'https://inventario-ventas.vercel.app',
+  'https://inventario-ventas-giunjxjxj-davidtordecilla2005-2459s-projects.vercel.app/login',
   'https://kinventory-2ddbb.web.app',
   'http://localhost:3000'
 ];
@@ -22,17 +23,12 @@ app.use(cors({
   credentials: true
 }));
 
-// 2. MIDDLEWARES
 app.use(express.json());
 
-// 3. RUTA DE PRUEBA
 app.get('/', (_, res) => res.json({ mensaje: 'API - Sistema de Inventario y Ventas', version: '2.0.0' }));
 
-// 4. CARGA DE RUTAS (IMPORTANTE: Solo una vez)
-// Si './routes/index' ya tiene el router.use('/auth', ...), usa solo esta línea:
-app.use('/', routes); 
+app.use('/', routes);
 
-// 5. MANEJO DE ERRORES (SIEMPRE AL FINAL)
 app.use((_, res) => {
   res.status(404).json({ error: 'Ruta no encontrada en el servidor.' });
 });
