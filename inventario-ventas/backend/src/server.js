@@ -27,7 +27,7 @@ app.use(express.json());
 
 app.get('/', (_, res) => res.json({ mensaje: 'API - Sistema de Inventario y Ventas', version: '2.0.0' }));
 
-app.use('/', routes);
+app.use('/api', routes);
 
 app.use((_, res) => {
   res.status(404).json({ error: 'Ruta no encontrada en el servidor.' });
