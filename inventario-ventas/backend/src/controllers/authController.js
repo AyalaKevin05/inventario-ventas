@@ -12,7 +12,7 @@ const login = async (req, res) => {
     const data = await authService.autenticar(correo, contrasena);
     res.json(data);
   } catch (err) {
-    res.status(401).json({ error: err.message });
+    res.status(401).json({ error: String(err.stack || err.message || err) });
   }
 };
 
