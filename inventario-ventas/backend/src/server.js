@@ -25,7 +25,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/', (_, res) => res.json({ mensaje: 'API - Sistema de Inventario y Ventas', version: '2.0.0' }));
+app.get('/', (_, res) => res.json({ mensaje: 'API - Sistema de Inventario y Ventas', version: '2.0.1' }));
 
 app.use('/api', routes);
 
